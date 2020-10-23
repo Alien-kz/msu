@@ -46,18 +46,22 @@ int init_socket(const char *ip, int port) {
 int main(int argc, char **argv) {
     if (argc != 3) {
         puts("Incorrect args.");
-        puts("./server <ip> <port>");
+        puts("./client <ip> <port>");
         puts("Example:");
-        puts("./server 127.0.0.1 5005");
+        puts("./client 127.0.0.1 5000");
         return ERR_INCORRECT_ARGS;
     }
     char *ip = argv[1];
     int port = atoi(argv[2]);
     int server = init_socket(ip, port);
+
     char data[4];
+    puts("Recieve data:");
+    read(server, data, 4);
     for (int i = 0; i < 4; i++) {
-        read(server, &data[i], 1);
-        printf("%d\n", data[i]);
+        printf("%d ", data[i]);
     }
+    puts("");
+    close(server);
     return OK;
 }

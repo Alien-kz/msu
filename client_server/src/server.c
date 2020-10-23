@@ -57,7 +57,7 @@ int main(int argc, char** argv) {
         puts("Incorrect args.");
         puts("./server <port>");
         puts("Example:");
-        puts("./server 8000");
+        puts("./server 5000");
         return ERR_INCORRECT_ARGS;
     }
     int port = atoi(argv[1]);
@@ -72,7 +72,12 @@ int main(int argc, char** argv) {
         printf("connected: %s %d\n", inet_ntoa(client_address.sin_addr),
                                      ntohs(client_address.sin_port));
         char data[4] = {42, 43, 44, 45};
-        write(client_socket, data, 42);
+        puts("Send data:");
+        write(client_socket, data, 4);
+        for (int i = 0; i < 4; i++) {
+            printf("%d ", data[i]);
+        }
+        puts("");
         close(client_socket);
     }
 

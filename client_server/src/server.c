@@ -24,10 +24,10 @@ int init_socket(int port) {
         perror("Fail: open socket");
         _exit(ERR_SOCKET);
     }
- 
+
     //set socket option
     int socket_option = 1;
-    setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &socket_option, sizeof(socket_option));
+    setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &socket_option, (socklen_t) sizeof(socket_option));
     if (server_socket < 0) {
         perror("Fail: set socket options");
         _exit(ERR_SETSOCKETOPT);
@@ -38,7 +38,7 @@ int init_socket(int port) {
     server_address.sin_family = AF_INET;
     server_address.sin_port = htons(port);
     server_address.sin_addr.s_addr = INADDR_ANY;
-    if (bind(server_socket, (struct sockaddr *) &server_address, sizeof(server_address)) < 0) {
+    if (bind(server_socket, (struct sockaddr *) &server_address, (socklen_t) sizeof(server_address)) < 0) {
         perror("Fail: bind socket address");
         _exit(ERR_BIND);
     }
@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
         puts("Wait for connection");
         struct sockaddr_in client_address;
         socklen_t size;
-        int client_socket = accept(server_socket, 
+        int client_socket = accept(server_socket,
                                    (struct sockaddr *) &client_address,
                                    &size);
         printf("connected: %s %d\n", inet_ntoa(client_address.sin_addr),

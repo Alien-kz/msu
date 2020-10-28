@@ -36,7 +36,7 @@ int init_socket(const char *ip, int port) {
     sin.sin_family = AF_INET;
     sin.sin_port = htons(port);
     memcpy(&sin.sin_addr, host->h_addr_list[0], sizeof(sin.sin_addr));
-    if (connect(server_socket, (struct sockaddr*) &sin, sizeof(sin)) < 0) {
+    if (connect(server_socket, (struct sockaddr*) &sin, (socklen_t) sizeof(sin)) < 0) {
         perror("Fail: connect");
         _exit(ERR_CONNECT);
     }

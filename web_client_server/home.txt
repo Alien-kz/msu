@@ -1,0 +1,175 @@
+1) HTTP высокий уровень [https://habr.com/ru/post/508592/]
+
+curl --get --data "subject=cmc" http://mymath.info/student/index.php > index.html
+
+Запрос ответа (body)
+curl ifconfig.me
+curl https://httpbin.org/get?answer=42
+
+Запрос заголовка (header) и ответа (body)
+curl -i https://httpbin.org/get?answer=42
+
+--------------------------------------
+ОТВЕТ HTTP
+
+VERSION:
+1.1
+2
+
+CODE:
+https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+
+Date:
+Wed, 04 Nov 2020 03:21:47 GMT
+
+Content-Type(MIME):
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
+application/json
+text/html
+text/html; charset=UTF-8
+
+content-length(LENGTH):
+BODY size bytes
+
+SERVER:
+
+
+HTTP/<VERSION> <CODE>\n
+date: <DATE>\n
+content-type: <MIME>\n
+content-length: <LENGTH>\n
+\n
+BODY
+
+--------------------------------------
+ЗАПРОС HTTP (curl -v -I)
+
+telnet httpbin.org 80
+
+===========
+GET /get?a=2 HTTP/1.1
+Host: httpbin.org
+User-Agent: curl/7.58.0
+
+===========
+POST /post HTTP/1.1
+Host: httpbin.org
+User-Agent: curl/7.58.0
+
+===========
+POST /post HTTP/1.1
+Host: httpbin.org
+User-Agent: curl/7.58.0
+Content-Length: 5
+Content-Type: application/x-www-form-urlencoded
+
+hello
+
+===========
+--------------------------------------
+
+01001010 10001111 01010101 
+
+utf-8
+[ ascii] [unicode        ]
+
+cp1251
+[ ascii] [cp1251] [cp1251]
+
+
+
+
+
+
+Запрос заголовка (header)
+curl -I https://httpbin.org/get?answer=42
+curl -I https://habrahabr.ru/
+curl -I https://habr.com/
+
+Запрос 
+curl -OL https://images.unsplash.com/photo-1506812574058-fc75fa93fead
+
+Запрос POST
+curl -X POST -d '{"answer":42}' https://httpbin.org/post
+
+Запрос PUT
+curl -X PUT -d '@data.json' -H "Content-Type: application/json" https://httpbin.org/put
+
+--------------------------
+
+
+
+
+GET /student/index.php?subject=cmc HTTP/1.1
+Host: mymath.info
+
+
+
+1) Аналог telnet
+web-client <host> <port>
+
+------------------- в терминале
+file1.txt
+file2.html
+file3.csv
+------------------- в коде
+GET file1.txt HTTP/1.1\n
+Host: mymath.info\n
+\n
+GET file2.html HTTP/1.1\n
+Host: mymath.info\n
+\n
+GET file3.csv HTTP/1.1\n
+Host: mymath.info\n
+\n
+
+
+2) Аналог веб-сервер
+web-server <port>
+
+----------------- read()
+GET file1.txt HTTP/1.1\n
+Host: mymath.info\n
+\n
+----------------- write()
+HTTP/1.1 200\n
+content-type: html/text\n
+content-length: 11\n
+\n
+hello world
+
+----------------- read()
+GET file2.html HTTP/1.1\n
+Host: mymath.info\n
+\n
+-----------------
+HTTP/1.1 404\n
+
+
+
+home5/
+
+
+
+
+
+
+3) HTTP пользовательский уровень
+Браузер
+
+http://mymath.info/student/
+
+ctrl+U - исходный html код страницы
+
+ctrl+shift+E - сетевой трафик
+
+Заголовки:
+URL запроса: http://mymath.info/student/index.php?subject=cmc
+Метод запроса: GET
+Удалённый адрес: 195.210.46.59:80
+Код состояния: 200
+Версия:HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linu…) Gecko/20100101 Firefox/75.0
+
+
+Параметры: subject=cmc

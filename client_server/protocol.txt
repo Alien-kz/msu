@@ -1,0 +1,25 @@
+
+протоколы
+
+Прикладной уровень (Application Layer) HTTP(80), HTTPS(443), FTP(20, 21), DNS, SSH(22), CUSTOM(5000)
+Транспортный уровень (Transport Layer) TCP, UDP
+Межсетевой уровень (Internet Layer) IPv4, IPv6
+Канальный уровень (Network Access Layer) Ethernet, IEEE 802.11 WLAN
+
+TCP - надёжная (проверяем дошёл или нет)
+UDP - ненадёжная (не проверяем дошёл)
+
+--------------------------------------------
+
+HTTP = hyper text transport protocol
+
+--------------------------------------------
+XML = extra meta language
+
+HTML = hyper text meta language      browser
+DOCX = document                      word, libreoffice
+--------------------------------------------
+<title> PAGE </title>
+Look this <url> /home/user/f.txt </url>
+<abc> </abc>
+

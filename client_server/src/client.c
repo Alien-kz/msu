@@ -21,7 +21,7 @@ int init_socket(const char *ip, int port) {
     int server_socket = socket(PF_INET, SOCK_STREAM, 0);
     if (server_socket < 0) {
         perror("Fail: open socket");
-        _exit(ERR_SOCKET);
+        exit(ERR_SOCKET);
     }
 
     //prepare server address
@@ -29,16 +29,15 @@ int init_socket(const char *ip, int port) {
     struct sockaddr_in server_address;
     server_address.sin_family = AF_INET;
     server_address.sin_port = htons(port);
-    memcpy(&server_address.sin_addr, host -> h_addr_list[0], sizeof(server_address.sin_addr));
+    memcpy(&server_address.sin_addr, host -> h_addr_list[0],
+           (socklen_t)sizeof(server_address.sin_addr));
+
 
     //connection
-    struct sockaddr_in sin;
-    sin.sin_family = AF_INET;
-    sin.sin_port = htons(port);
-    memcpy(&sin.sin_addr, host->h_addr_list[0], sizeof(sin.sin_addr));
-    if (connect(server_socket, (struct sockaddr*) &sin, (socklen_t) sizeof(sin)) < 0) {
+    if (connect(server_socket, (struct sockaddr*) &server_address,
+        (socklen_t)sizeof(server_address)) < 0) {
         perror("Fail: connect");
-        _exit(ERR_CONNECT);
+        exit(ERR_CONNECT);
     }
     return server_socket;
 }

@@ -32,6 +32,7 @@ int init_socket(const char *ip, int port) {
     memcpy(&server_address.sin_addr, host -> h_addr_list[0],
            (socklen_t)sizeof(server_address.sin_addr));
 
+
     //connection
     if (connect(server_socket, (struct sockaddr*) &server_address,
         (socklen_t)sizeof(server_address)) < 0) {

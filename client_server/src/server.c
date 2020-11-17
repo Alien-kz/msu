@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
     while(1) {
         puts("Wait for connection");
         struct sockaddr_in client_address;
-        socklen_t size;
+        socklen_t size = sizeof client_address;
         int client_socket = accept(server_socket,
                                    (struct sockaddr *) &client_address,
                                    &size);

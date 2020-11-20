@@ -33,7 +33,7 @@ bin/server 8080 2
 RECIEVE
 ```
 GET index.html HTTP/1.1\n
-Host: localhost\n
+Host: 127.0.0.1\n
 \n
 ```
 
@@ -58,7 +58,7 @@ bin/client
 SEND:
 ```
 GET index.html HTTP/1.1\n
-Host: localhost\n
+Host: 127.0.0.1\n
 \n
 ```
 

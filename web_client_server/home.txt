@@ -146,6 +146,12 @@ Host: mymath.info\n
 HTTP/1.1 404\n
 
 
+----------------- read()
+GET file1.txt HTTP/1.1\n
+mymath.info\n
+\n
+-----------------
+HTTP/1.1 404\n
 
 home5/
 
@@ -173,3 +179,19 @@ User-Agent: Mozilla/5.0 (X11; Ubuntu; Linu…) Gecko/20100101 Firefox/75.0
 
 
 Параметры: subject=cmc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

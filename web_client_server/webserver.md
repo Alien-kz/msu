@@ -12,7 +12,11 @@ source/
 bin/
   server
   client
+cfg/
+  server.cfg
 resource/
+  database/
+    marks.csv
   cgi-source/
     hello-world.c
   cgi-bin/
@@ -22,6 +26,11 @@ resource/
   multimedia/
     logo.png
 ```
+server.cfg:
+resource/
+resource/html/
+resource/multimedia/
+
 ---------------------------------------------
 
 # Пример работы
@@ -52,14 +61,16 @@ bin/client
 ```
 ## Клиент терминал
 ```
-127.0.0.1:8080/index.html
+127.0.0.1:8080/index.html (init write read 400 close)
+127.0.0.1:8080/file.txt (init write read 400 close)
+127.0.0.1:8080/file.txt (init write read 300 close)
 ```
 ## Клиент запросы (по сокету)
 SEND:
 ```
-GET index.html HTTP/1.1\n
-Host: 127.0.0.1\n
-\n
+GET index.html HTTP/1.1\r
+Host: 127.0.0.1\r
+\r
 ```
 
 RECIEVE:
@@ -175,6 +186,23 @@ interaction_client(client_socket) {
 ```
 
 3) GET binary query string
+
+http://127.0.0.1:8080/cgi-bin/get_mark?user=masha&subject=math
+http://127.0.0.1:8080/cgi-bin/get_mark?subject=math&user=masha
+[http    ] :// [127.0.0.1] : [8080] / [cgi-bin/get_mark] ? [query]
+
+
+exec("hello-world", "user", "masha", "subject", "math")
+
+0 1 или 2 query параметра
+
+------------------------------
+3a)
+database/marks.csv (comma separated values)
+
+,math,phys
+vasya,5,4
+mash,3,4
 
 4) GET multimedia
 

@@ -206,6 +206,40 @@ mash,3,4
 
 4) GET multimedia
 
+client (save to directory)
+firefox
+
 5) POST text
 
-6) POST multimedia
+6) SERVER CONNECTION LIMIT 
+```
+free_client_slots_num - semaphore
+num_of_clients - var
+
+free_client_slots_num = init(num_of_clients)
+
+while(1) {
+   //critic start
+   if (free_client_slots_num > 0) {
+       free_client_slots_num--;
+       //critic end
+       accept =
+       pid = fork()
+       if (pid == 0) interacion();
+   } else {
+      printf("no free slots")
+   }
+}
+
+interaction() {
+  while(1) {
+    if (read() <= 0) {
+       break;
+    }
+  }
+  //critic start
+  free_client_slots_num++;
+  //critic end
+  exit(1)
+}
+```

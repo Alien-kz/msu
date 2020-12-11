@@ -41,9 +41,9 @@ bin/server 8080 2
 ## Сервер запросы (по сокету)
 RECIEVE
 ```
-GET index.html HTTP/1.1\n
-Host: 127.0.0.1\n
-\n
+GET index.html HTTP/1.1\r\n
+Host: 127.0.0.1\r\n
+\r\n
 ```
 
 SEND
@@ -68,15 +68,15 @@ bin/client
 ## Клиент запросы (по сокету)
 SEND:
 ```
-GET index.html HTTP/1.1\r
-Host: 127.0.0.1\r
-\r
+GET index.html HTTP/1.1\r\n
+Host: 127.0.0.1\r\n
+\r\n
 ```
 
 RECIEVE:
 ```
 HTTP/1.1 200\n
-content-type: html/text\n
+content-type: text/html\n
 content-length: 24\n
 \n
 <html>hello world</html>
@@ -211,7 +211,7 @@ firefox
 
 5) POST text
 
-6) SERVER CONNECTION LIMIT 
+6) SERVER CONNECTION LIMIT
 ```
 free_client_slots_num - semaphore
 num_of_clients - var
